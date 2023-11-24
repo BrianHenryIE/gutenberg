@@ -6,7 +6,6 @@ import {
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 	__experimentalText as Text,
-	FlexBlock,
 	Tooltip,
 	VisuallyHidden,
 } from '@wordpress/components';
@@ -40,17 +39,13 @@ export function ViewGrid( { data, fields, view, actions, getItemId } ) {
 			className="dataviews-grid-view"
 		>
 			{ shownData.map( ( item, index ) => (
-				<VStack key={ getItemId?.( item ) || index }>
+				<VStack key={ getItemId?.( item ) || index } className="dataviews-view-grid__card">
 					<div className="dataviews-view-grid__media">
 						{ mediaField?.render( { item, view } ) }
 					</div>
 					<HStack justify="space-between">
-						<FlexBlock>
-							{ primaryField?.render( { item, view } ) }
-						</FlexBlock>
-						<FlexBlock>
-							<ItemActions item={ item } actions={ actions } />
-						</FlexBlock>
+						{ primaryField?.render( { item, view } ) }
+						<ItemActions item={ item } actions={ actions } />
 					</HStack>
 					<div className="dataviews-view-grid__fields">
 						{ visibleFields.map( ( field ) => (

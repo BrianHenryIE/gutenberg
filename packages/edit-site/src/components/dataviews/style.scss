@@ -51,6 +51,14 @@
 		grid-template-columns: repeat(4, minmax(0, 1fr)) !important; // Todo: eliminate !important dependency
 	}
 
+	.dataviews-view-grid__card {
+		h3 { // Todo: A better way to target this
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
 	.dataviews-view-grid__media {
 		width: 100%;
 		min-height: 200px;

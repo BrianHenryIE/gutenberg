@@ -85,7 +85,10 @@ export default function ItemActions( { item, actions } ) {
 		return null;
 	}
 	return (
-		<HStack justify="flex-end" spacing={ 1 }>
+		<HStack spacing={ 1 } justify='flex-end' style={{
+			flexShrink: '0',
+			width: 'auto'
+		  }}>
 			{ !! primaryActions.length &&
 				primaryActions.map( ( action ) => {
 					if ( !! action.RenderModal ) {
