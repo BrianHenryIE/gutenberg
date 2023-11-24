@@ -7,6 +7,8 @@ import {
 	__experimentalVStack as VStack,
 	__experimentalText as Text,
 	FlexBlock,
+	Tooltip,
+	VisuallyHidden,
 } from '@wordpress/components';
 import { useAsyncList } from '@wordpress/compose';
 
@@ -50,20 +52,20 @@ export function ViewGrid( { data, fields, view, actions, getItemId } ) {
 							<ItemActions item={ item } actions={ actions } />
 						</FlexBlock>
 					</HStack>
-					<VStack className="dataviews-view-grid__fields">
+					<div className="dataviews-view-grid__fields">
 						{ visibleFields.map( ( field ) => (
-							<HStack justify="space-between" key={ field.id }>
-								<FlexBlock>
-									<Text variant="muted">
-										{ field.header }
-									</Text>
-								</FlexBlock>
-								<FlexBlock>
-									{ field.render( { item, view } ) }
-								</FlexBlock>
-							</HStack>
+							<>
+							<VisuallyHidden>
+								{field.header}
+							</VisuallyHidden>
+							<span className="dataviews-view-grid__field-value">
+								<Tooltip text={field.header} placement='top'>
+									<span>{field.render({ item, view })}</span>
+								</Tooltip>
+							</span>
+							</>
 						) ) }
-					</VStack>
+					</div>
 				</VStack>
 			) ) }
 		</Grid>
