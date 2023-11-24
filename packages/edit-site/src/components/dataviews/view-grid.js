@@ -7,7 +7,6 @@ import {
 	__experimentalVStack as VStack,
 	__experimentalText as Text,
 	FlexBlock,
-	Placeholder,
 } from '@wordpress/components';
 import { useAsyncList } from '@wordpress/compose';
 
@@ -41,15 +40,7 @@ export function ViewGrid( { data, fields, view, actions, getItemId } ) {
 			{ shownData.map( ( item, index ) => (
 				<VStack key={ getItemId?.( item ) || index }>
 					<div className="dataviews-view-grid__media">
-						{ mediaField?.render( { item, view } ) || (
-							<Placeholder
-								withIllustration
-								style={ {
-									width: '100%',
-									minHeight: '200px',
-								} }
-							/>
-						) }
+						{ mediaField?.render( { item, view } ) }
 					</div>
 					<HStack justify="space-between">
 						<FlexBlock>
