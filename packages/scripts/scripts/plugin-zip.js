@@ -21,6 +21,7 @@ if ( hasPackageProp( 'files' ) ) {
 	stdout.write(
 		'Using the `files` field from `package.json` to detect files:\n\n'
 	);
+	packlist.ignoreFiles = [];
 	files = packlist();
 } else {
 	stdout.write(
